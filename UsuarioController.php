@@ -1,19 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace KCC\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Usuario;
+use Rut;
 
 class UsuarioController extends Controller
 {    
 	public function getUsuario($rut)
 	{
-		return Usuario::rut($this->validarRut($rut))->first();
-	}
-
-	private function validarRut($rut)
-	{
-		return $rut;
+		return Usuario::rut(Rut::validar($rut))->first();
 	}
 }
